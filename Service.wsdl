@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<definitions name="flightINfo" targetNamespace="urn:flightINfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:flightINfo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="flightINfoPort"><operation name="getFlightInfo">
+<input message="tns:getFlightInfoRequest" />
+<output message="tns:getFlightInfoResponse" />
+</operation>
+<operation name="getBuyInfo">
+<input message="tns:getBuyInfoRequest" />
+<output message="tns:getBuyInfoResponse" />
+</operation>
+</portType>
+<binding name="flightINfoBinding" type="tns:flightINfoPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="getFlightInfo">
+<soap:operation soapAction="urn:flightINfo#Service#getFlightInfo" />
+<input><soap:body use="encoded" namespace="urn:flightINfo" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:flightINfo" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="getBuyInfo">
+<soap:operation soapAction="urn:flightINfo#Service#getBuyInfo" />
+<input><soap:body use="encoded" namespace="urn:flightINfo" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:flightINfo" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="flightINfo">
+<documentation />
+<port name="flightINfoPort" binding="tns:flightINfoBinding"><soap:address location="http://localhost:80/getWSDL.php" />
+</port>
+</service>
+<message name="getFlightInfoRequest">
+<part name="dest" type="xsd:string" />
+<part name="src" type="xsd:string" />
+<part name="date" type="xsd:string" />
+</message>
+<message name="getFlightInfoResponse">
+<part name="getFlightInfo" type="xsd:string" />
+</message>
+<message name="getBuyInfoRequest">
+<part name="flightNum" type="xsd:string" />
+<part name="needNum" type="xsd:string" />
+</message>
+<message name="getBuyInfoResponse">
+<part name="getBuyInfo" type="xsd:string" />
+</message>
+</definitions>
